@@ -1,0 +1,443 @@
+.hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    background-image: url('../../assets/HeroFront.jpg');
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.order-button {
+    display: inline-block;
+    margin: 5px;
+}
+
+.front {
+    width: 100%;
+}
+
+.banner {
+    background: linear-gradient(135deg, #2d2d2d, #5c2a2a);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.banner-title {
+    margin: auto;
+}
+
+.banner-sections {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .banner-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero {
+        height: 80vh;
+    }
+}
+
+.banner-section {
+    flex: 1;
+    margin: auto;
+    font-size: 24px;
+}
+
+@media (max-width: 768px) {
+    .banner-section {
+        margin: 10px 0;
+        padding: 10px 0;
+    }
+}
+
+.banner2 {
+    background-color: #006847;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    height: fit-content;
+}
+
+.banner-sections2 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    flex-direction: column;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
+}
+
+@media (min-width: 768px) {
+    .front {
+        width: 800px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero {
+        height: 80vh;
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        height: 90vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+.owl-carousel .owl-item img {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+img.person {
+    width: 100px !important;
+    place-self: center;
+}
+
+span.foodReview {
+    font-size: small;
+}
+
+.gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.reviews-section {
+    background-image: url('https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-1566867.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.reviews-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.reviews-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .reviews-title {
+        font-size: 2em;
+    }
+}
+
+.review {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .review {
+        margin-bottom: 15px;
+    }
+}
+
+.review-author {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .review-author {
+        font-size: 1em;
+    }
+}
+
+.stars {
+    color: #ffdd00;
+}
+
+.review-text {
+    font-size: 1em;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .review-text {
+        font-size: 0.9em;
+    }
+}
+
+.footer-container {
+    background-color: #f9f9f9;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.map-container {
+    width: 50%;
+    height: 400px;
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.restaurant-info {
+    width: 50%;
+    padding: 20px;
+    height: 400px;
+    background-color: #A92224;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .restaurant-info {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+}
+
+.restaurant-info h2 {
+    margin-top: 0;
+}
+
+.footer-details {
+    text-align: center;
+    color: #555;
+    margin-top: 20px;
+}
+
+.footer-details p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.socialMedia {
+    text-align: center;
+    margin-top: 2rem;
+
+    h4 {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+
+        a img {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.2s ease;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+/* Container */
+.banner2 {
+    background: linear-gradient(135deg, #1e1e1e, #2d5f5d);
+    padding: 60px 20px;
+    color: #fff;
+}
+
+/* Centered Inner Wrapper */
+.banner-sections2 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Title */
+.banner-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+/* Grid Layout */
+.wp-block-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+/* Card Styles */
+.wp-block-column {
+    flex: 1 1 calc(25% - 32px);
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    max-width: 260px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wp-block-column:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Image */
+.wp-block-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Optional Caption Below Image */
+.wp-element-caption {
+    font-size: 0.85rem;
+    color: #ccc;
+    padding: 8px 12px 0;
+}
+
+/* Text Content */
+.wp-block-group {
+    padding: 18px 15px 22px;
+}
+
+.wp-block-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.wp-block-group p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .wp-block-column {
+        flex: 1 1 calc(50% - 32px);
+    }
+}
+
+@media (max-width: 600px) {
+    .wp-block-column {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .banner-title {
+        text-align: center;
+        font-size: 2.2rem;
+    }
+}
