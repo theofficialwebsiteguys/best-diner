@@ -16,16 +16,14 @@
     </div>
 </div>
 
-<div class="gallery">
-    <img loading="lazy" src="assets/HeroFront.jpg" alt="Gallery Image 1">
-    <img loading="lazy" src="assets/FrontTurf3.jpg" alt="Gallery Image 2">
-    <img loading="lazy" src="assets/FrontTurf2.jpg" alt="Gallery Image 3">
-    <img loading="lazy" src="assets/FrontTurf.jpg" alt="Gallery Image 4">
-    <img loading="lazy" src="assets/FrontDirectLeft2.jpg" alt="Gallery Image 5">
-    <img loading="lazy" src="assets/FrontDirectleft.jpg" alt="Gallery Image 6">
-    <img loading="lazy" src="assets/FrontDirect.jpg" alt="Gallery Image 7">
-    <img loading="lazy" src="assets/FrontDirect2.jpg" alt="Gallery Image 8">
-</div>
+<section class="food-gallery">
+    <div class="gallery-grid">
+      <div class="gallery-item" *ngFor="let image of images">
+        <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+      </div>
+    </div>
+  </section>
+  
 
 <div class="banner2">
     <div class="banner-sections2">
@@ -138,47 +136,46 @@
 
 <div class="reviews-section">
     <h2 class="reviews-title">See What Our Customers Have To Say!</h2>
-    <owl-carousel-o [options]="carouselOptions">
-        <ng-template carouselSlide>
-            <div class="review">
-
-                <h3 class="review-author">Anton Delgado <br><span class="foodReview">Traveler, Food Reviewer</span>
-                </h3><img class="person"
-                    src="https://s0.wp.com/wp-content/themes/premium/varese/assets/images/avatar1.png"
-                    alt="Gallery Image 8">
-
-                <p class="review-text">A great diner in town. They have a bunch of booths and a bunch of tables. They
-                    have a lot of options on their menu and the hot sandwiches that we got were delicious! They have a
-                    full bar there with cocktails and beer. We also got a pitcher of sangria which was really good.
-                    Their prices were very reasonable. The atmosphere was a little weird because it felt a bit like a
-                    diner, but they also had random fancy decorations as well. It felt like an interesting combination,
-                    but everything was clean and the waiters were very polite and friendly.</p>
-                <p class="review-text">The food is bragworthy. This is where I’ll bring guests from out of town from now
-                    on.</p>
-            </div>
-            <div class="review">
-
-                <h3 class="review-author">Jane Duffy <br><span class="foodReview">Foodie, Food enthusiast</span> </h3>
-                <img class="person" src="https://s0.wp.com/wp-content/themes/premium/varese/assets/images/avatar2.png"
-                    alt="Gallery Image 8">
-
-                <p class="review-text">A great diner in town. They have a bunch of booths and a bunch of tables. They
-                    have a lot of options on their menu and the hot sandwiches that we got were delicious! They have a
-                    full bar there with cocktails and beer. We also got a pitcher of sangria which was really good.
-                    Their prices were very reasonable. The atmosphere was a little weird because it felt a bit like a
-                    diner, but they also had random fancy decorations as well. It felt like an interesting combination,
-                    but everything was clean and the waiters were very polite and friendly.</p>
-                <p class="review-text">Truly happy we opted to go here. Double Thumps up for bringing “The Best Diner”
-                    back to Suffern.</p>
-            </div>
-        </ng-template>
+    <owl-carousel-o [options]="carouselOptions" class="reviews-carousel">
+      <ng-template carouselSlide>
+        <div class="review">
+          <h3 class="review-author">
+            Anton Delgado <br />
+            <span class="foodReview">Traveler, Food Reviewer</span>
+          </h3>
+          <img
+            class="person"
+            src="https://s0.wp.com/wp-content/themes/premium/varese/assets/images/avatar1.png"
+            alt="Anton"
+          />
+          <p class="review-text">A great diner in town. They have a bunch of booths and a bunch of tables. They have a lot of options on their menu and the hot sandwiches that we got were delicious! They have a full bar there with cocktails and beer. We also got a pitcher of sangria which was really good. Their prices were very reasonable. The atmosphere was a little weird because it felt a bit like a diner, but they also had random fancy decorations as well. It felt like an interesting combination, but everything was clean and the waiters were very polite and friendly.</p>
+          <p class="review-text">The food is bragworthy. This is where I’ll bring guests from out of town from now on.</p>
+        </div>
+      </ng-template>
+  
+      <ng-template carouselSlide>
+        <div class="review">
+          <h3 class="review-author">
+            Jane Duffy <br />
+            <span class="foodReview">Foodie, Food Enthusiast</span>
+          </h3>
+          <img
+            class="person"
+            src="https://s0.wp.com/wp-content/themes/premium/varese/assets/images/avatar2.png"
+            alt="Jane"
+          />
+          <p class="review-text">Visited the diner with a friend and we had a wonderful experience. The food was good and tasted fresh, I ordered a panini and my friend had breakfast. Of course we sampled each other’s plate and we both enjoyed the food. The staff was friendly and attentive to us. Our food came to us in a good amount of time and the portion was more than enough. I had to take the rest of mine to go! If you’re in the area, definitely stop by for a bite!</p>
+          <p class="review-text">Truly happy we opted to go here. Double Thumps up for bringing “The Best Diner” back to Suffern.</p>
+        </div>
+      </ng-template>
     </owl-carousel-o>
-</div>
+  </div>
+  
 
 <div class="footer-container">
     <h2 class="reviews-title text-center">Come Visit Us Today!</h2>
     <div class="w-full text-center">
-        <img class="front" src="assets/FrontDirect2.jpg" alt="">
+        <img class="front" src="assets/FrontDirectLeft2.jpg" alt="">
     </div>
 
     <div class="footer-content">
@@ -198,16 +195,16 @@
             <div class="socialMedia">
                 <div class="social-icons">
                     <a href="https://www.yelp.com/biz/the-best-diner-suffern" target="_blank" aria-label="Yelp">
-                        <img src="assets/yelp.svg" alt="Yelp" />
+                        <i class="fa-brands fa-yelp"></i>
                     </a>
                     <a href="https://www.facebook.com/adarakarestaurant" target="_blank" aria-label="Facebook">
-                        <img src="assets/facebook.svg" alt="Facebook" />
+                        <i class="fa-brands fa-facebook"></i>
                     </a>
                     <a href="https://www.instagram.com/tbdiner/" target="_blank" aria-label="Instagram">
-                        <img src="assets/instagram.svg" alt="Instagram" />
+                        <i class="fa-brands fa-instagram"></i>
                     </a>
                     <a href="https://goo.gl/maps/yeiDhCHcYoDUNxkeA" target="_blank" aria-label="Google">
-                        <img src="assets/google.svg" alt="Google" />
+                        <i class="fa-brands fa-google"></i>
                     </a>
                 </div>
             </div>

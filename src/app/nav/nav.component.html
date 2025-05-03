@@ -1,72 +1,52 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" #navbar>
-    <div class="container-fluid">
-        <!-- Navbar toggler button -->
-        <button class="navbar-toggler order-1 mt-4" type="button" (click)="toggleMobileMenu()">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar fixed-top" [class.scrolled]="isScrolled">
+    <div class="nav-wrapper container-fluid">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/gallery" routerLinkActive="active">Gallery</a></li>
+  
+        <li class="nav-logo">
+          <a routerLink="/" class="navbar-brand">
+            <img src="assets/logo.png" alt="Logo" />
+          </a>
+        </li>
+  
+        <li class="nav-item"><a class="nav-link" routerLink="/menu" routerLinkActive="active">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" target="_blank" href="https://online.skytab.com/709ef35565effc96be0975b789a41198">Order</a></li>
+      </ul>
+  
+      
+      <button class="navbar-toggler" type="button" (click)="toggleMobileMenu()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Mobile slide menu -->
+      <div class="slide-in-menu" [class.active]="mobileMenuActive">
+        <button class="close-button" (click)="closeMenu()">×</button>
+      
 
-        <!-- Left side links -->
-        <div class="collapse navbar-collapse justify-content-end order-1" id="navbarScrollLeft">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item" (click)="closeMenu()">
-                    <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
-                </li>
-                <li class="nav-item" (click)="closeMenu()">
-                    <a class="nav-link" routerLink="/gallery" routerLinkActive="active">Gallery</a>
-                </li>
-            </ul>
+      
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+          <li class="nav-item-mobile"><a class="nav-link" routerLink="/" (click)="closeMenu()">Home</a></li>
+          <li class="nav-item-mobile"><a class="nav-link" routerLink="/gallery" (click)="closeMenu()">Gallery</a></li>
+          <li class="nav-item-mobile"><a class="nav-link" routerLink="/menu" (click)="closeMenu()">Menu</a></li>
+          <li class="nav-item-mobile">
+            <a class="nav-link" target="_blank" href="https://online.skytab.com/709ef35565effc96be0975b789a41198" (click)="closeMenu()">Order</a>
+          </li>
+        </ul>
+      
+                <!-- Logo -->
+                <div class="mobile-logo">
+                    <img src="assets/logo.png" alt="Business Logo" />
+                  </div>
+        <!-- Contact Info -->
+        <div class="mobile-contact">
+          <p><strong>The Best Diner</strong></p>
+          <p>36 Lafayette Ave, Suffern, NY 10901</p>
+          <p><a class="phone" href="tel:8453575700">(845) 357-5700</a></p>
         </div>
-
-        <!-- Center logo -->
-        <a class="navbar-brand mx-auto order-2" routerLink="/">
-            <img src="assets/Logo.webp" id="logo" alt="Logo Description" />
-        </a>
-
-        <!-- Right side links -->
-        <div class="collapse navbar-collapse justify-content-start order-3 rs" id="navbarScrollRight">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item" (click)="closeMenu()">
-                    <a class="nav-link" routerLink="/menu" routerLinkActive="active">Menu</a>
-                </li>
-                <li class="nav-item" (click)="closeMenu()">
-                    <a class="nav-link" href="https://online.skytab.com/709ef35565effc96be0975b789a41198"><span
-                            class="wp-block-navigation-item__label">Online Ordering</span></a>
-                </li>
-                <!-- <button class="btn btn-primary">Order Online</button> -->
-            </ul>
-        </div>
-
-        <!-- Slide-in menu for smaller screens -->
-        <div class="slide-in-menu" [class.active]="mobileMenuActive">
-            <div class="slide-in-menu-content">
-                <!-- Close button -->
-                <button class="close-button" (click)="closeMenu()">×</button>
-
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item" (click)="closeMenu()">
-                        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-                    </li>
-                    <li class="nav-item" (click)="closeMenu()">
-                        <a class="nav-link" routerLink="/gallery" routerLinkActive="active">Gallery</a>
-                    </li>
-                    <li class="nav-item" (click)="closeMenu()">
-                        <a class="nav-link" routerLink="/menu" routerLinkActive="active">Menu</a>
-                    </li>
-                    <li class="nav-item" (click)="closeMenu()">
-                        <a class="nav-link" routerLink="/catering" routerLinkActive="active">Catering</a>
-                    </li>
-
-                </ul>
-
-                <div class="container slide-footer text-center">
-                    <img src="../../assets/Logo.webp" id="logo" height="100" alt="Logo Description" />
-                    <p class="text-dark mt-3">165 Pleasant St #3, Marblehead, MA 01945</p>
-                    <section class="m-4">
-                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="" role="button"
-                            data-mdb-ripple-color="dark"><i class="fab fa-facebook"></i></a>
-                    </section>
-                </div>
-            </div>
-        </div>
+      </div>
+      
     </div>
-</nav>
+  </nav>
+  

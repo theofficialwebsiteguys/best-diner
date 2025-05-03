@@ -1,14 +1,24 @@
-<div class="menu-container">
-    <h2 class="text-center">Check out our menu!</h2>
-    <div class="menu-images">
-        <div class="menu-image">
-            <img src="assets/menu2.jpg" alt="Menu 2">
+<section class="menu-section">
+    <div class="container">
+      <h1 class="menu-title">Our Menu</h1>
+  
+      <div class="menu-grid">
+        <div class="menu-category" *ngFor="let category of menu">
+          <h2 class="category-title">{{ category.name }}</h2>
+          <div class="menu-items">
+            <div class="menu-item" *ngFor="let item of category.items">
+              <div class="menu-item-header">
+                <h4>{{ item.name }}</h4>
+                <span *ngIf="item.price != null">${{ item.price.toFixed(2) }}</span>
+              </div>
+              <p class="item-description" *ngIf="item.description">{{ item.description }}</p>
+            </div>
+          </div>
         </div>
-        <div class="menu-image">
-            <img src="assets/menu1.jpg" alt="Menu 1">
-        </div>
+      </div>
     </div>
-</div>
+  </section>
+  
 
 
 

@@ -57,7 +57,7 @@
 }
 
 .banner {
-    background: linear-gradient(135deg, #2d2d2d, #5c2a2a);
+    background: linear-gradient(135deg, #d54933, #75281c);
     color: white;
     padding: 20px;
     text-align: center;
@@ -165,14 +165,51 @@ span.foodReview {
     font-size: small;
 }
 
-.gallery img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
+.food-gallery {
+    padding: 60px 20px;
+    background-color: #fffef9;
+  
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+  
+  
+      .image-overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-align: center;
+        font-size: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+  
 .reviews-section {
-    background-image: url('https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-1566867.jpeg');
+    background-image: url('../../assets/FrontTurf.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -289,8 +326,8 @@ span.foodReview {
     width: 50%;
     padding: 20px;
     height: 400px;
-    background-color: #A92224;
-    color: white;
+    background: #000000;
+    color: rgb(255, 255, 255);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -331,6 +368,11 @@ span.foodReview {
         justify-content: center;
         gap: 1.5rem;
 
+        .fa-brands{
+            font-size: 28px;
+            color: white;
+        }
+
         a img {
             width: 32px;
             height: 32px;
@@ -345,7 +387,7 @@ span.foodReview {
 
 /* Container */
 .banner2 {
-    background: linear-gradient(135deg, #1e1e1e, #2d5f5d);
+    background: linear-gradient(135deg, rgb(27, 34, 48), #1e3b6f);
     padding: 60px 20px;
     color: #fff;
 }

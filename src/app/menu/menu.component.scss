@@ -1,54 +1,87 @@
-.menu-container {
+.menu-section {
+    padding: 80px 20px;
+    background: #fffef9;
+  }
+  
+  .menu-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+  }
+  
+  .category-title {
+    font-size: 2rem;
+    margin-top: 50px;
+    color: #A92224;
+    border-bottom: 2px solid #A92224;
+    padding-bottom: 10px;
+  }
+  
+  .menu-items {
+    margin-top: 20px;
+  }
+  
+  .menu-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .menu-item-header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    padding-top: 50px;
-}
-
-.menu-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    /* Set a max width for the container */
-    margin: 0 auto;
-}
-
-.menu-image {
-    margin: 10px;
-    width: 100%;
-}
-
-.menu-image img {
-    width: 100%;
-    height: auto;
-    /* Maintain aspect ratio */
-    max-width: 100%;
-    border-radius: 8px;
-    /* Optional: add some border radius for better appearance */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Optional: add some shadow for depth */
-}
-
-@media (min-width: 768px) {
-    .menu-images {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .item-description {
+    margin-top: 8px;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-title {
+      font-size: 2.2rem;
     }
-
-    .menu-image {
-        flex: 1 1 calc(50% - 20px);
-        /* Two images per row with some margin */
-        margin: 10px;
+    .category-title {
+      font-size: 1.6rem;
     }
-}
+    .menu-item-header {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
 
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .menu-category {
+    break-inside: avoid;
+  }
+  
 
+  
+  /* Mobile stack */
+  @media (max-width: 768px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .menu-title {
+      font-size: 2rem;
+    }
+  
+    .category-title {
+      font-size: 1.3rem;
+    }
+  }
+  
 
+  
 .footer-container {
     background-color: #f9f9f9;
     padding-top: 100px;

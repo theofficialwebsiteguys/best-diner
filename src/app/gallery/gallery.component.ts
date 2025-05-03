@@ -9,24 +9,19 @@ import { CommonModule } from '@angular/common';
 })
 export class GalleryComponent {
   images: { src: string, alt: string }[] = [
-    // { src: 'assets/food.jpg', alt: 'Delicious Dish 1' },
-    // { src: 'assets/food2.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food3.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food4.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food5.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food7.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food8.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food9.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/food10.jpg', alt: 'Delicious Dish 2' },
-    // { src: 'assets/drink-image.jpg', alt: 'Restaurant Interior 1' },
-    // { src: 'assets/drink2.jpg', alt: 'Restaurant Interior 2' },
-    // { src: 'assets/drink3.jpg', alt: 'Restaurant Interior 2' },
-    // { src: 'assets/table-food.webp', alt: 'Restaurant Interior 1' },
-    // { src: 'assets/tables.jpg', alt: 'Restaurant Interior 2' },
-    // { src: 'assets/food-tg1.jpg', alt: 'Restaurant Interior 2' },
-    // { src: 'assets/food-tg2.jpg', alt: 'Restaurant Interior 2' },
-    // { src: 'assets/food-tg3.jpg', alt: 'Restaurant Interior 2' },
-    // { src: 'assets/dessert.jpg', alt: 'Restaurant Interior 2' },
+    { src: 'assets/food/food1.jpeg', alt: 'Delicious Dish 1' },
+    { src: 'assets/food/food2.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food3.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food4.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food5.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food7.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food8.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food9.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food10.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food11.jpeg', alt: 'Delicious Dish 1' },
+    { src: 'assets/food/food12.jpeg', alt: 'Delicious Dish 2' },
+    { src: 'assets/food/food13.jpeg', alt: 'Delicious Dish 2' },
+
     // Add more images as needed
   ];
 }
