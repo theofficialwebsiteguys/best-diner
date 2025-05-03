@@ -1,0 +1,7 @@
+{
+  "routes": {
+    "/best-diner": {},
+    "/best-diner/gallery": {},
+    "/best-diner/menu": {}
+  }
+}
