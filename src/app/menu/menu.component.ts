@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FooterMapComponent } from '../footer-map/footer-map.component';
 
 interface MenuItem {
   name: string;
@@ -14,7 +15,7 @@ interface MenuCategory {
 
 @Component({
   selector: 'app-menu',
-  imports: [CommonModule],
+  imports: [CommonModule, FooterMapComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
@@ -988,7 +989,6 @@ export class MenuComponent {
         }
       ]
     },    
-    { name: "TRY OUR NEW DELICIOUS MIMOSAS", items: [] },
     {
       name: "PREMIUM MIMOSA",
       items: [

@@ -4,8 +4,8 @@
     <div class="banner-sections">
         <div class="banner-section"></div>
         <div class="banner-section">
-            <p>Mon - Sat: 11am - 10pm</p>
-            <p>Sunday: 11am - 9pm</p>
+            <p>Sun - Thurs: 7am - 9pm</p>
+            <p>Fri - Sat: 7am - 10pm</p>
         </div>
         <div class="banner-section">
             <p>36 Lafayette Ave,</p>
@@ -40,8 +40,7 @@
                             class="wp-image-41"
                             srcset="https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-8352775.jpeg 1733w, https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-8352775.jpeg?w=150&amp;h=113 150w, https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-8352775.jpeg?w=300&amp;h=225 300w, https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-8352775.jpeg?w=768&amp;h=576 768w, https://bestdinerny.com/wp-content/uploads/2023/07/pexels-photo-8352775.jpeg?w=1024&amp;h=768 1024w"
                             sizes="(max-width: 1733px) 100vw, 1733px">
-                        <figcaption class="wp-element-caption">Lobster Specials (Call)</figcaption>
-                    </figure>
+                                          </figure>
                 </figure>
 
 
@@ -137,42 +136,23 @@
 <div class="reviews-section">
     <h2 class="reviews-title">See What Our Customers Have To Say!</h2>
     <owl-carousel-o [options]="carouselOptions" class="reviews-carousel">
-      <ng-template carouselSlide>
+      <ng-template carouselSlide *ngFor="let review of reviews">
         <div class="review">
           <h3 class="review-author">
-            Anton Delgado <br />
-            <span class="foodReview">Traveler, Food Reviewer</span>
+            {{ review.name }}<br />
+            <span class="foodReview">{{ review.role }}</span>
           </h3>
-          <img
-            class="person"
-            src="https://s0.wp.com/wp-content/themes/premium/varese/assets/images/avatar1.png"
-            alt="Anton"
-          />
-          <p class="review-text">A great diner in town. They have a bunch of booths and a bunch of tables. They have a lot of options on their menu and the hot sandwiches that we got were delicious! They have a full bar there with cocktails and beer. We also got a pitcher of sangria which was really good. Their prices were very reasonable. The atmosphere was a little weird because it felt a bit like a diner, but they also had random fancy decorations as well. It felt like an interesting combination, but everything was clean and the waiters were very polite and friendly.</p>
-          <p class="review-text">The food is bragworthy. This is where I’ll bring guests from out of town from now on.</p>
-        </div>
-      </ng-template>
-  
-      <ng-template carouselSlide>
-        <div class="review">
-          <h3 class="review-author">
-            Jane Duffy <br />
-            <span class="foodReview">Foodie, Food Enthusiast</span>
-          </h3>
-          <img
-            class="person"
-            src="https://s0.wp.com/wp-content/themes/premium/varese/assets/images/avatar2.png"
-            alt="Jane"
-          />
-          <p class="review-text">Visited the diner with a friend and we had a wonderful experience. The food was good and tasted fresh, I ordered a panini and my friend had breakfast. Of course we sampled each other’s plate and we both enjoyed the food. The staff was friendly and attentive to us. Our food came to us in a good amount of time and the portion was more than enough. I had to take the rest of mine to go! If you’re in the area, definitely stop by for a bite!</p>
-          <p class="review-text">Truly happy we opted to go here. Double Thumps up for bringing “The Best Diner” back to Suffern.</p>
+          <img class="person" [src]="review.image" [alt]="review.name" />
+          <p class="review-text" *ngFor="let text of review.texts">{{ text }}</p>
         </div>
       </ng-template>
     </owl-carousel-o>
   </div>
   
-
-<div class="footer-container">
+  
+  
+  <app-footer-map></app-footer-map>
+<!-- <div class="footer-container">
     <h2 class="reviews-title text-center">Come Visit Us Today!</h2>
     <div class="w-full text-center">
         <img class="front" src="assets/FrontDirectLeft2.jpg" alt="">
@@ -210,4 +190,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
