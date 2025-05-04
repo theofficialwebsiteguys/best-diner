@@ -1,4 +1,4 @@
-<!doctype html>
+export default `<!doctype html>
 <html lang="en" data-beasties-container="">
 <head>
   <meta charset="utf-8">
@@ -13,3 +13,4 @@
   <app-root></app-root>
 <link rel="modulepreload" href="chunk-IRBTKGEV.js"><script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-QM3CRYF7.js" type="module"></script></body>
 </html>
+`;
