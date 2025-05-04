@@ -22,6 +22,53 @@ interface MenuCategory {
 export class MenuComponent {
   menu: MenuCategory[] =  [
     {
+      name: "APPETIZERS",
+      items: [
+        {
+          name: "Fried Calamari",
+          price: 14.99
+        },
+        {
+          name: "Mozzarella Sticks (6 pcs)",
+          price: 11.99
+        },
+        {
+          name: "Chicken Quesadilla",
+          price: 8.99
+        },
+        {
+          name: "Cheese Quesadilla",
+          price: 6.99
+        },
+        {
+          name: "Chicken Tenders (5 pcs) with French Fries",
+          price: 13.99
+        },
+        {
+          name: "Coconut Shrimp",
+          price: 14.99
+        },
+        {
+          name: "Sample Platter",
+          price: 15.99,
+          description: "Mozzarella sticks, wings, and chicken tenders."
+        },
+        {
+          name: "Nachos Dorados",
+          price: 10.99,
+          description: "Chips topped with cheddar cheese, chili, tomatoes, and jalapeños. Sour cream and salsa on side."
+        },
+        {
+          name: "Cup of Soup $3.50 • Bowl",
+          price: 4.5
+        },
+        {
+          name: "French Onion Soup",
+          price: 5.99
+        }
+      ]
+    },    
+    {
       name: "SALADS",
       items: [
         {
@@ -79,103 +126,6 @@ export class MenuComponent {
           name: "With Chicken $15.99 • With Shrimp",
           price: 17.99,
           description: "Spring mix, lettuce, tomatoes, cucumbers, red onions, olives, feta, Greek dressing."
-        }
-      ]
-    },
-    {
-      name: "APPETIZERS",
-      items: [
-        {
-          name: "Fried Calamari",
-          price: 14.99
-        },
-        {
-          name: "Mozzarella Sticks (6 pcs)",
-          price: 11.99
-        },
-        {
-          name: "Chicken Quesadilla",
-          price: 8.99
-        },
-        {
-          name: "Cheese Quesadilla",
-          price: 6.99
-        },
-        {
-          name: "Chicken Tenders (5 pcs) with French Fries",
-          price: 13.99
-        },
-        {
-          name: "Coconut Shrimp",
-          price: 14.99
-        },
-        {
-          name: "Sample Platter",
-          price: 15.99,
-          description: "Mozzarella sticks, wings, and chicken tenders."
-        },
-        {
-          name: "Nachos Dorados",
-          price: 10.99,
-          description: "Chips topped with cheddar cheese, chili, tomatoes, and jalapeños. Sour cream and salsa on side."
-        },
-        {
-          name: "Cup of Soup $3.50 • Bowl",
-          price: 4.5
-        },
-        {
-          name: "French Onion Soup",
-          price: 5.99
-        }
-      ]
-    },    
-    {
-      "name": "BREAKFAST",
-      "items": [
-        {
-          "name": "Served with toast & home fries:",
-          "price": 8.99
-        },
-        {
-          "name": "With bacon, sausage, or ham:",
-          "price": 10.99
-        },
-        {
-          "name": "With corned beef hash:",
-          "price": 11.99,
-          "description": "Omelettes"
-        },
-        {
-          "name": "(Served with toast & home fries. Add cheese or substitute bagel/muffin +$1)"
-        },
-        {
-          "name": "Cheese Omelet",
-          "price": 9.99
-        },
-        {
-          "name": "Western Omelet",
-          "price": 12.99,
-          "description": "(Ham, green pepper, onions)"
-        },
-        {
-          "name": "Vegetarian Omelet",
-          "price": 12.99,
-          "description": "(Mushrooms, tomato, spinach, onion, green pepper)"
-        },
-        {
-          "name": "Meat Lover\u2019s Omelet",
-          "price": 13.99,
-          "description": "(Bacon, sausage, ham)"
-        },
-        {
-          "name": "California Omelet",
-          "price": 13.99,
-          "description": "(Tomato, avocado, cheddar cheese, mushrooms)"
-        },
-        {
-          "name": "Garden Power Omelet",
-          "price": 13.99,
-          "description": "(Tomato, broccoli, spinach, cheddar cheese, egg whites)"
         }
       ]
     },
