@@ -4,8 +4,15 @@
   
       <div class="menu-grid">
         <div class="menu-category" *ngFor="let category of menu">
-          <h2 class="category-title">{{ category.name }}</h2>
-          <div class="menu-items">
+          <div class="category-toggle" (click)="isMobile ? category.expanded = !category.expanded : null">
+            <h2 class="category-title">
+              {{ category.name }}
+              <span class="toggle-icon" *ngIf="isMobile">{{ category.expanded ? '−' : '+' }}</span>
+            </h2>
+          </div>
+          
+          
+          <div class="menu-items" *ngIf="category.expanded">
             <div class="menu-item" *ngFor="let item of category.items">
               <div class="menu-item-header">
                 <h4>{{ item.name }}</h4>
@@ -21,36 +28,3 @@
   
 
 <app-footer-map></app-footer-map>
-<!-- 
-<div class="footer-content">
-    <div class="map-container">
-        <iframe width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.842473731628!2d-74.15562408724213!3d41.116131271216034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2e1ba4cb0d2b5%3A0x81b53c8784c89119!2sThe%20Best%20Diner%20-%20Family%20Restaurant!5e0!3m2!1sen!2sus!4v1746053799300!5m2!1sen!2sus">
-        </iframe>
-    </div>
-    <div class="restaurant-info text-center">
-        <h2>The Best Diner</h2>
-        <p>Address: 36 Lafayette Ave, Suffern, NY 10901</p>
-        <p>Phone: (845) 357.5700</p>
-        <h4>Hours:</h4>
-        <p>Sun - Thurs: 7am - 9pm</p>
-        <p>Fri - Sat: 7am - 10pm</p>
-        <h2>Connect With Us</h2>
-        <div class="socialMedia">
-            <div class="social-icons">
-                <a href="https://www.yelp.com/biz/the-best-diner-suffern" target="_blank" aria-label="Yelp">
-                    <img src="assets/yelp.svg" alt="Yelp" />
-                </a>
-                <a href="https://www.facebook.com/adarakarestaurant" target="_blank" aria-label="Facebook">
-                    <img src="assets/facebook.svg" alt="Facebook" />
-                </a>
-                <a href="https://www.instagram.com/tbdiner/" target="_blank" aria-label="Instagram">
-                    <img src="assets/instagram.svg" alt="Instagram" />
-                </a>
-                <a href="https://goo.gl/maps/yeiDhCHcYoDUNxkeA" target="_blank" aria-label="Google">
-                    <img src="assets/google.svg" alt="Google" />
-                </a>
-            </div>
-        </div>
-    </div>
-</div> -->

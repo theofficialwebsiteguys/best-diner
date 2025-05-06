@@ -11,6 +11,7 @@ interface MenuItem {
 interface MenuCategory {
   name: string;
   items: MenuItem[];
+  expanded?: boolean;
 }
 
 @Component({
@@ -20,51 +21,82 @@ interface MenuCategory {
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
+
+  isMobile = window.innerWidth <= 768;
+
+
+  constructor() {
+    this.menu = this.menu.map(cat => ({ ...cat, expanded: true }));
+  }
+
+  ngOnInit() {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 768;
+    });
+  
+    // Default expanded for desktop
+    this.menu.forEach(category => category['expanded'] = true);
+  }
+
   menu: MenuCategory[] =  [
     {
       name: "APPETIZERS",
       items: [
         {
+          name: "Chicken Wing (10 pcs)",
+          price: 13.99,
+          description: "(Choice of sauce - Buffalo, BBQ, Teryaki, Sweet Chili)"
+        },
+        {
+          name: "Mozzarella Sticks (8 pcs)",
+          price: 11.99
+        },
+        {
           name: "Fried Calamari",
           price: 14.99
         },
         {
-          name: "Mozzarella Sticks (6 pcs)",
-          price: 11.99
-        },
-        {
-          name: "Chicken Quesadilla",
+          name: "Cheese Quesadilla",
           price: 8.99
         },
         {
-          name: "Cheese Quesadilla",
-          price: 6.99
+          name: "Chicken Quesadilla (with Shrimp or steak $16.99)",
+          price: 14.99,
+          description: "Grilled chicken, onions, peppers"
         },
         {
-          name: "Chicken Tenders (5 pcs) with French Fries",
+          name: "Chicken Tenders (3 pcs) with French Fries",
           price: 13.99
         },
         {
           name: "Coconut Shrimp",
-          price: 14.99
+          price: 15.99
         },
         {
           name: "Sample Platter",
-          price: 15.99,
-          description: "Mozzarella sticks, wings, and chicken tenders."
+          price: 21.99,
+          description: "Fried Calamari, Fried Clams, Chicken Wings, and Mozzarella Sticks, served with marinara sauce and blue cheese dressing."
         },
         {
           name: "Nachos Dorados",
-          price: 10.99,
-          description: "Chips topped with cheddar cheese, chili, tomatoes, and jalapeños. Sour cream and salsa on side."
+          price: 15.99,
+          description: "Tortilla chips with chili con carne, melted jack cheddar cheese, red onions, tomatoes, jalapeños, sliced avocado, sour cream, chunky salsa."
         },
         {
-          name: "Cup of Soup $3.50 • Bowl",
+          name: "Cup of Soup",
+          price: 3.5
+        },
+        {
+          name: "Bowl of Soup",
           price: 4.5
         },
         {
+          name: "Bowl of Chili",
+          price: 8.99
+        },
+        {
           name: "French Onion Soup",
-          price: 5.99
+          price: 6.99
         }
       ]
     },    
@@ -74,185 +106,200 @@ export class MenuComponent {
         {
           name: "Chef’s Salad",
           price: 15.99,
-          description: "Mixed greens, ham, turkey, American cheese, tomato, cucumber."
+          description: "Turkey, ham, roast beef, American cheese, tomato, cucumber, sliced egg, on mix greens."
         },
         {
           name: "Tuscany Salad",
           price: 15.99,
-          description: "Mixed greens, grilled chicken, roasted red peppers, tomato, fresh mozzarella."
+          description: "Zucchini, peppers, mushrooms, spinach, cucumber, grilled chicken breast."
         },
         {
-          name: "Caesar Salad",
-          price: 9.99
-        },
-        {
-          name: "With Chicken $15.99 • With Steak $16.99 • With Shrimp",
-          price: 17.99
+          name: "Caesar Salad (With Chicken $15.99 • With Steak $16.99 • With Shrimp $17.99)",
+          price: 9.99,
+          description: "Romaine lettuce, croutons, parmesan cheese, Caesar dressing."
         },
         {
           name: "Buffalo Salad",
-          price: 15.99,
-          description: "Romaine lettuce, tomato, red onions, cucumber, buffalo chicken tenders, blue cheese dressing."
+          price: 16.99,
+          description: "Fried chicken cutlet tossed in buffalo sauce, mix greens, bacon, tomato, cucumber, crumbled blue cheese, ranch dressing."
         },
         {
           name: "Steak Salad",
           price: 19.99,
-          description: "Fresh mozzarella, roasted red peppers, tomato, over greens with grilled steak."
+          description: "Sliced steak, cucumber, tomato, roasted pepper, fresh mozzarella, sun dried tomato, house dressing."
         },
         {
           name: "Salmon Salad",
           price: 20.99,
-          description: "Spring mix, red onions, walnuts, avocado, feta cheese, grilled salmon."
+          description: "Green mix lettuce, tomatoes, cucumbers, tortilla strips, mandarin oranges, glazed walnuts, avacado, sliced salmon wih citrus dressing."
         },
         {
           name: "Apple Walnut Salad",
           price: 15.99,
-          description: "Spring mix, grilled chicken, walnuts, apples, cranberries, feta, raspberry vinaigrette."
+          description: "Spring mix lettuce, tomato, apple slices, cucumbers, carrots, and a scoop of chicken salad with raspberry vinaigrette."
         },
         {
           name: "Florentine Salad",
           price: 12.99,
-          description: "Spinach, feta cheese, tomatoes, cucumbers, red onions, Greek dressing."
+          description: "Spinach, feta cheese, tomatoes, onions, bacon, mushrooms & hard boiled egg. Add CHIX $6.99, STEAK $8.99, SHRIMP or SALMON $8.99"
         },
         {
-          name: "Add Chicken $3.00 • Add Steak $4.00 • Add Shrimp $5.00 • Add Salmon",
-          price: 6.0
+          name: "Greek Salad (With Chicken $16.99 • With Steak $19.99 • With Shrimp $19.99)",
+          price: 10.99,
+          description: 'Spring mix lettuce, tomatoes, cucumbers, red onions, kalamata olives, Feta cheese, pita bread, and Greek dressing.'
         },
-        {
-          name: "Greek Salad",
-          price: 10.99
-        },
-        {
-          name: "With Chicken $15.99 • With Shrimp",
-          price: 17.99,
-          description: "Spring mix, lettuce, tomatoes, cucumbers, red onions, olives, feta, Greek dressing."
-        }
       ]
     },
     {
       name: "BREAKFAST",
       items: [
         {
-          name: "Served with toast & home fries:",
+          name: "Eggs",
+          price: 8.99,
+          description: "Two eggs, any style includes home fries and toast (over, scrambled, poached)"
+        },
+        {
+          name: "Eggs with virginia ham or bacon; sausage",
+          price: 10.99,
+          description: "Two eggs, any style includes home fries and toast (over, scrambled, poached)"
+        },
+        {
+          name: "Eggs with regular or canadian bacon",
+          price: 11.99,
+          description: "Two eggs, any style includes home fries and toast (over, scrambled, poached)"
+        },
+        {
+          name: "Eggs with Corned Beef hash",
+          price: 12.99,
+          description: "Two eggs, any style includes home fries and toast (over, scrambled, poached)"
+        },
+        {
+          name: "Plain Omelet",
           price: 8.99
         },
         {
-          name: "With bacon, sausage, or ham:",
+          name: "Cheese Omelet",
           price: 10.99
         },
         {
-          name: "With corned beef hash:",
-          price: 11.99,
-          description: "Omelettes"
+          name: "Sensation Omelet",
+          price: 12.99,
+          description: 'tomatoes, spinach & mushroom'
         },
         {
-          name: "(Served with toast & home fries. Add cheese or substitute bagel/muffin +$1)"
-        },
-        {
-          name: "Cheese Omelet",
-          price: 9.99
-        },
-        {
-          name: "Western Omelet",
+          name: "Western Omelet (with cheese $13.99)",
           price: 12.99,
           description: "(Ham, green pepper, onions)"
         },
         {
-          name: "Vegetarian Omelet",
+          name: "Garden Omelet",
           price: 12.99,
-          description: "(Mushrooms, tomato, spinach, onion, green pepper)"
-        },
-        {
-          name: "Meat Lover’s Omelet",
-          price: 13.99,
-          description: "(Bacon, sausage, ham)"
+          description: "(tomatoes, pepper, spinach, onion)"
         },
         {
           name: "California Omelet",
           price: 13.99,
-          description: "(Tomato, avocado, cheddar cheese, mushrooms)"
+          description: "(Tomato, avocado, green onions, jack cheddar cheese, mushrooms)"
         },
         {
-          name: "Garden Power Omelet",
+          name: "Doctor Omelet",
+          price: 12.99,
+          description: "(mushrooms, broccoli, spinach, and egg whites)"
+        },
+        {
+          name: "Florentin Omelet",
           price: 13.99,
-          description: "(Tomato, broccoli, spinach, cheddar cheese, egg whites)"
-        }
+          description: "(tomatoes, spinach & feta cheese)"
+        },
+        {
+          name: "Ham & Cheese Omelet",
+          price: 12.99,
+        },
       ]
     }, 
     {
       name: "EGG SANDWICHES & WRAPS",
       items: [
         {
-          name: "Ham & Cheese Omelet Sandwich",
-          price: 9.99
+          name: "Fried Egg (2 eggs)",
+          price: 5.00,
+          description: 'with bacon, ham, pork, sausage, or canadian bacon $9.99'
         },
         {
-          name: "Western Wrap",
-          price: 10.99,
-          description: "(Ham, onion, pepper, eggs, cheese in a wrap)"
+          name: "Western Sandwhich",
+          price: 8.00,
+          description: "egg, ham, pepper, onions, add cheese $1.50"
         },
         {
           name: "Breakfast Wrap",
-          price: 9.99,
-          description: "(Scrambled eggs, cheese, ham or sausage)"
+          price: 11.99,
+          description: "two eggs, avacado, tomatoes, spinach"
         },
         {
-          name: "Egg on a Roll",
-          price: 6.99
+          name: "Burrito Wrap",
+          price: 11.99,
+          description: "two eggs, red onions, beans, rice, and jack cheddar cheese"
         },
         {
-          name: "(With bacon, ham or sausage +$1)"
+          name: "Trio Wrap",
+          price: 11.99,
+          description: "two eggs, bacon, sausage, ham, american cheese"
         },
         {
-          name: "Two Eggs with Bacon & Cheese",
-          price: 7.99
+          name: "Steak & Egg",
+          price: 19.99,
+          description: "Sirloin steak (12oz) two eggs any style served with home fries"
         },
-        {
-          name: "Egg Whites Wrap",
-          price: 8.99,
-          description: "(Spinach, tomato, avocado)"
-        }
       ]
     },      
     {
       name: "PANCAKES",
       items: [
         {
-          name: "Buttermilk Pancakes (3 pcs)",
-          price: 8.99
+          name: "Golden Brown Buttermilk Pancakes (3 pcs)",
+          price: 8.99,
+          description: 'add bacon, ham, prok, sausage, or canadian bacon $3.50'
         },
         {
           name: "Short Stack Pancakes (2 pcs)",
           price: 7.99
         },
         {
-          name: "Pancakes with Bacon or Sausage",
-          price: 10.99
+          name: "Silver Dollar Pancakes (10 pcs)",
+          price: 9.99
         },
         {
-          name: "Pancakes with Ham or Corned Beef Hash",
+          name: "Blueberry or Strawberry Pancakes (3 pcs)",
           price: 11.99
         },
         {
-          name: "Banana Pancakes",
+          name: "Banana Pancakes (3 pcs)",
+          price: 11.99
+        },
+        {
+          name: "Chocolate Chips Pancakes (3 pcs)",
           price: 9.99
         },
         {
-          name: "Strawberry Pancakes",
-          price: 9.99
+          name: "Banana Nutella Pancakes (3 pcs)",
+          price: 12.99
         },
         {
-          name: "Blueberry Pancakes",
-          price: 9.99
-        },
-        {
-          name: "Oreo Pancakes",
+          name: "Walnut Pancakes (3 pcs)",
           price: 10.99
+        },
+        {
+          name: "Coconut Pancakes (3 pcs)",
+          price: 10.99
+        },
+        {
+          name: "Oreo Pancakes (3 pcs)",
+          price: 10.00
         },
         {
           name: "Huevos Rancheros",
           price: 14.99,
-          description: "(Two eggs, tortilla, ranchero sauce, black beans, cheese)"
+          description: "Three scrambled eggs with red onions, tomatoes, chorizo, fresh cilantro, served with rice, tortilla and salsa"
         }
       ]
     },    
@@ -260,14 +307,15 @@ export class MenuComponent {
       name: "CHALLAH BREAD FRENCH TOAST",
       items: [
         {
-          name: "(Served with butter & syrup — add real maple syrup $3)"
-        },
-        {
-          name: "French Toast (3 pcs)",
+          name: "French Toast (2 pcs)",
           price: 8.99
         },
         {
-          name: "Nutella French Toast (3 pcs)",
+          name: "Nutella French Toast (2 pcs)",
+          price: 10.99
+        },
+        {
+          name: "Coconut Pineapple French Toast (2 pcs)",
           price: 10.99
         },
         {
@@ -275,24 +323,16 @@ export class MenuComponent {
           price: 9.99
         },
         {
-          name: "With Strawberries or Bananas",
-          price: 10.99
+          name: "Creamy Sweet Crepes",
+          price: 12.99
         },
-        {
-          name: "Combo",
-          price: 12.99,
-          description: "(Two eggs any style & two strips of bacon or two sausages)"
-        }
       ]
     },    
     {
       name: "WAFFLES",
       items: [
         {
-          name: "(Add real maple syrup $3)"
-        },
-        {
-          name: "Belgian Waffle",
+          name: "Belgian Waffle (1pc)",
           price: 8.99
         },
         {
@@ -310,7 +350,7 @@ export class MenuComponent {
       ]
     },    
     {
-      name: "PANCAKE COMBO $12.99",
+      name: "PANCAKE COMBO $15.99",
       items: []
     },    
     {
@@ -321,7 +361,7 @@ export class MenuComponent {
       name: "HAMBURGERS",
       items: [
         {
-          name: "(All burgers are served with French fries. Upgrade to sweet potato fries or onion rings +$2)"
+          name: "All burgers are served with French fries. Upgrade to sweet potato fries or onion rings +$2",
         },
         {
           name: "Angus Burger Deluxe",
@@ -330,27 +370,37 @@ export class MenuComponent {
         {
           name: "California Burger",
           price: 14.99,
-          description: "(Avocado, tomato, lettuce, mayo)"
+          description: "Avocado, bacon, swiss cheese"
         },
         {
-          name: "Nevada Burger",
+          name: "Nirvana Burger",
           price: 14.99,
-          description: "(Bacon, cheddar, fried egg)"
+          description: "grilled tomato, fried egg, bacon, cheddar cheese"
         },
         {
           name: "Hangover Burger",
           price: 14.99,
-          description: "(Bacon, sausage, cheddar cheese)"
+          description: "mushroom, onion, american cheese"
         },
         {
           name: "Real Hot Pepper Burger",
           price: 14.99,
-          description: "(Jalapeño, pepper jack, chipotle mayo)"
+          description: "avocado, jalapeno, red onion, lettuce, mayo, jack cheddar cheese"
+        },
+        {
+          name: "Chipotle Burger",
+          price: 14.99,
+          description: "Fried egg, bacon, red onions, cheddar cheese and chipotle mayo"
         },
         {
           name: "Vegetable Burger Dlx",
           price: 12.99,
           description: "(Lettuce, tomato, red onion)"
+        },
+        {
+          name: "Salmon Burger",
+          price: 15.99,
+          description: "fresh salmon, avocado, red onion"
         }
       ]
     },    
@@ -358,12 +408,12 @@ export class MenuComponent {
       name: "WRAPS",
       items: [
         {
-          name: "All wraps are served with French fries (Upgrade to sweet potato fries or onion rings for $2.00 extra)"
+          name: 'All wraps are served with French fries. Upgrade to sweet potato fries or onion rings for $2.00 extra'
         },
         {
           name: "Buffalo Wrap",
           price: 13.99,
-          description: "Chicken tenders, buffalo sauce, lettuce, blue cheese dressing"
+          description: "Crispy Chicken, romaine lettuce, hot suace, blue cheese dressing"
         },
         {
           name: "Mexican Wrap",
@@ -371,29 +421,27 @@ export class MenuComponent {
           description: "Grilled chicken, lettuce, tomato, cheddar cheese"
         },
         {
-          name: "Chicken Caesar Wrap",
-          price: 13.99
-        },
-        {
           name: "Chicken Roma Wrap",
           price: 13.99,
-          description: "Grilled chicken, tomato, mayo, mozzarella"
+          description: "Grilled chicken, lettuce, Caesar dressing"
         },
         {
           name: "California Wrap",
           price: 14.99,
-          description: "Chicken, avocado, tomato, mayo, mozzarella"
+          description: "Chicken, avocado, bacon, tomato, mayo, and mozzarella"
         },
         {
           name: "Steak Wrap",
-          price: 15.99
+          price: 15.99,
+          description: 'Steak, onions, pepper, American cheese'
         },
         {
           name: "Salmon Wrap",
-          price: 15.99
+          price: 15.99,
+          description: 'Spinach, tomato, avocado, mandarin orange, and raspberry vinaigrette dressing'
         },
         {
-          name: "Tuna or Chicken Turkey Wrap (Served with lettuce & tomato)",
+          name: "Tuna or Chicken, Turkey Wrap (Served with lettuce & tomato)",
           price: 13.99
         },
         {
@@ -406,38 +454,37 @@ export class MenuComponent {
       name: "HOT PRESSED PANINIS",
       items: [
         {
-          name: "(Served with French fries or sweet potato fries / onion rings for $2.00 extra)",
-          description: "Choice of bread: ciabatta, focaccia, or flatbread."
+          name: 'Served with French fries or sweet potato fries / onion rings for $2.00 extra'
         },
         {
-          name: "Cuban Panini",
+          name: "USA Panini",
           price: 14.99,
-          description: "Ham, pork, Swiss cheese, pickles, mustard"
+          description: "Chicken cutlet, bacon, and american cheese"
         },
         {
           name: "The Louisiana Panini",
           price: 14.99,
-          description: "Cajun chicken, tomato, mozzarella, chipotle mayo"
+          description: "Cajun chicken breast, onion, sliced tomato, cheddar cheese"
         },
         {
           name: "Mediterranean Panini",
           price: 14.99,
-          description: "Grilled eggplant, tomato, mozzarella, pesto"
+          description: "Grilled chicken breast, grilled vegetable, mozzarella cheese"
         },
         {
           name: "Turkey Club Panini",
           price: 14.99,
-          description: "Turkey, bacon, tomato, cheddar cheese"
+          description: "Roast Turkey, bacon, coleslaw, swiss cheese"
         },
         {
-          name: "Athena Panini",
+          name: "Athenian Panini",
           price: 14.99,
-          description: "Grilled chicken, spinach, tomato, feta"
+          description: "Grilled chicken breast, tzatziki sauce, feta cheese"
         },
         {
           name: "BBQ Chicken Panini",
           price: 14.99,
-          description: "Grilled chicken, BBQ sauce, cheddar cheese"
+          description: "Grilled chicken breast, red onion, bacon, BBQ sauce, cheddar cheese"
         }
       ]
     },    
@@ -445,35 +492,41 @@ export class MenuComponent {
       name: "HOT SANDWICHES",
       items: [
         {
-          name: "(Served with French fries or sweet potato fries / onion rings for $2.00 extra)"
+          name: 'Served with French fries or sweet potato fries / onion rings for $2.00 extra'
         },
         {
           name: "Chicken Parm Sandwich",
-          price: 15.99
+          price: 16.99
+        },
+        {
+          name: "Classic Tuna melt",
+          price: 13.99,
+          description: 'Tuna salad, grill tomato, rye bread, american cheese'
         },
         {
           name: "Philly Cheese Steak",
-          price: 15.99
+          price: 15.99,
+          description: 'grilled steak, onion, green pepper, american cheese'
         },
         {
           name: "Reuben Sandwich",
           price: 14.99,
-          description: "Corned beef or turkey, Swiss cheese, sauerkraut, Russian dressing, on rye"
+          description: "Grilled rye bread and sauerkraut on your choice of corn beef, turkey, or patrami melted swiss cheese"
         },
         {
-          name: "Grilled Chicken Sandwich",
+          name: "Chicken Souvlaki",
           price: 13.99,
-          description: "Lettuce, tomato, mozzarella, balsamic"
+          description: "Grilled chicken, onion, tomatoes, lettuce with homeade tzatziki sauce on a pita bread"
         },
         {
-          name: "Cali Roma Club",
-          price: 15.99,
-          description: "Grilled chicken, avocado, bacon, lettuce, tomato, chipotle mayo on pita"
+          name: "California Club",
+          price: 14.99,
+          description: "Grilled chicen, avocado, bacon, tomatoes, mayo, and mozzarella cheese"
         },
         {
           name: "Beef Gyro",
           price: 15.99,
-          description: "Lettuce, tomato, red onion, tzatziki on pita"
+          description: "Meat, lettuce, tomatoes, onions, tzatziki sauce on pita bread."
         }
       ]
     },    
@@ -481,7 +534,7 @@ export class MenuComponent {
       name: "COLD SANDWICHES",
       items: [
         {
-          name: "All served with lettuce, tomato & French fries (Upgrade to onion rings or sweet potato fries $2.00)"
+          name: 'All served with lettuce, tomato & French fries. Upgrade to onion rings or sweet potato fries $2.00'
         },
         {
           name: "Chicken Salad",
@@ -492,12 +545,12 @@ export class MenuComponent {
           price: 9.99
         },
         {
-          name: "Roast Beef",
-          price: 9.99
-        },
-        {
           name: "Tuna Salad",
           price: 8.99
+        },
+        {
+          name: "Roast Beef",
+          price: 9.99
         },
         {
           name: "Hot Pastrami",
@@ -506,54 +559,64 @@ export class MenuComponent {
         {
           name: "Triple Decker Club",
           price: 12.99,
-          description: "(Turkey, bacon, lettuce, tomato, mayo)"
-        }
-      ]
-    },    
-    {
-      name: "BLT $7.99",
-      items: [
-        {
-          name: "Grill Cheese",
-          price: 6.99
+          description: "Turkey breast or chicken salad, bacon, lettuce, tomatoes Tuna salad or Roast Beef. Add $1.50 extra each"
         },
         {
-          name: "Add Tomato $1.00 • Add Bacon",
-          price: 1.99
+          name: "BLT",
+          price: 7.99
         },
         {
           name: "Hot Corned Beef",
           price: 9.99
         },
         {
-          name: "Hot Open Roast Beef",
-          price: 18.99,
-          description: "Served with potatoes & vegetables"
+          name: "Grill Cheese (Add Tomato $1.00 • Add Bacon $1.99)",
+          price: 6.99
         },
         {
           name: "Hot Open Turkey",
           price: 18.95,
-          description: "Served with stuffing, cranberry sauce, potatoes & vegetables"
-        }
+          description: "Served with potatoes & vegetables"
+        },
+        {
+          name: "Hot Open Roast Beef",
+          price: 18.99,
+          description: "Served with potatoes & vegetables"
+        },
       ]
-    },    
+    },      
     {
       name: "STEAK",
       items: [
         {
           name: "NY Sirloin Steak",
           price: 33.99,
-          description: "Served with sautéed mushrooms and onions, mashed potatoes & vegetables"
+          description: "Steak (16oz) gravy demi-glace sauce served with potatoes and vegatables"
         },
         {
           name: "Porterhouse Steak",
           price: 36.99,
-          description: "24 oz. steak, served with mashed potatoes and vegetables"
+          description: "T-bone Grilled Steak (20oz) creamy peppercorn sauce served with potatoes and vegetables"
         },
         {
           name: "Surf & Turf",
-          price: 39.99,
-          description: "16 oz. sirloin steak and shrimp scampi, served with rice"
+          price: 29.99,
+          description: "13 oz. sirloin steak and shrimp scampi, served with rice"
+        },
+        {
+          name: "Pork Chops",
+          price: 24.99,
+          description: "served with mashed potatoes and vegatbles topped with rosemary sauce"
+        },
+        {
+          name: "Romanian Steak",
+          price: 36.99,
+          description: "Grilled skirt steak with sauteed onions served with potatoes and vegetables"
+        },
+        {
+          name: "Chopped Sirloin Steak",
+          price: 21.99,
+          description: "Steak with brown gravy, grilled onions and mushrooms served with potatoes and vegetables"
         }
       ]
     },    
@@ -561,34 +624,29 @@ export class MenuComponent {
       name: "CHICKEN SPECIALS",
       items: [
         {
-          name: "Chicken Marsala",
+          name: "Chicken Special",
           price: 22.99,
-          description: "Chicken breast sautéed with mushrooms in a marsala wine sauce"
-        },
-        {
-          name: "Chicken Francese",
-          price: 22.99,
-          description: "Egg-battered chicken breast in a lemon butter sauce"
+          description: "Chicken Parmigiana, Chicken Francaise, Chicken Marsala, served with soup or salad"
         },
         {
           name: "Chicken Teriyaki",
           price: 22.99,
-          description: "Grilled chicken breast in teriyaki glaze with rice"
+          description: "Sauteed with fresh garden vegetables in teryaki sauce, served with rice"
         },
         {
           name: "Chicken Delight",
           price: 22.99,
-          description: "Grilled chicken, mushrooms, garlic, and fresh herbs over sautéed broccoli"
+          description: "Chicken breast marinated in olive oil with fresh garlic, and fine herbs served over sauteed broccoli and fresh spinach"
         },
         {
           name: "Lemon Chicken",
           price: 25.99,
-          description: "Breaded chicken cutlet in lemon sauce, served over linguine"
+          description: "Breaded chicken sauteed tomatoes, spinach, garlic butter sauce serverd over linguine"
         },
         {
           name: "Chicken Madeira",
           price: 25.99,
-          description: "Sautéed chicken breast in a madeira wine sauce, with mozzarella cheese, served with mashed potatoes"
+          description: "Chicken breast sauteed mushrooms, asparagus in a madeira sauce & melted mozzarella cheese served with mashed potatoes"
         }
       ]
     },    
@@ -598,81 +656,77 @@ export class MenuComponent {
         {
           name: "Broiled Salmon",
           price: 26.99,
-          description: "With lemon, dill butter sauce, mashed potatoes and vegetables"
+          description: "With lemon butter sauce served with potatoes and vegetables"
         },
         {
           name: "Shrimp Parmigiana",
           price: 27.99,
-          description: "Breaded shrimp topped with mozzarella and homemade tomato sauce"
+          description: "Served over linguine with mozzarella cheese and rich homeade tomato sauce"
         },
         {
           name: "Teriyaki Salmon",
           price: 28.99,
-          description: "Pan-seared salmon glazed with teriyaki sauce, served with rice and vegetables"
+          description: "Pan seared scallions with garlic teriyaki sauce served with rice and vegetables"
         },
         {
           name: "Veracruz-Style Salmon",
-          price: 26.99,
-          description: "With tomato, olives, green peppers, and avocado"
+          price: 28.99,
+          description: "tomatoes, red onions, garlic butter sauce, served with rice and avocado"
         },
         {
           name: "Broiled Flounder Filet",
           price: 26.99,
-          description: "With lemon butter sauce"
+          description: "With lemon butter sauce served with potatoes and vegetables"
         },
         {
           name: "Stuffed Filet of Sole",
-          price: 29.99,
-          description: "Filet rolled with crab meat stuffing, served with mashed potatoes"
+          price: 28.99,
+          description: "roll up with crab meat served with sauteed spinach and mashed potatoes"
         },
         {
           name: "Flounder Francaise",
           price: 26.99,
-          description: "Egg-battered filet in lemon butter sauce"
+          description: "With francaise sauce served with choice of rice or pasta"
         },
         {
-          name: "Stuffed Shrimp (3 pcs)",
+          name: "Broiled Shrimp (6 pcs)",
           price: 29.99,
-          description: "With crab meat stuffing"
+          description: "with lemon butter sauce served with potatoes and vegetables"
         },
         {
           name: "Stuffed Shrimp (4 pcs)",
           price: 36.99,
-          description: "With crab meat stuffing"
+          description: "with crab meat stuffed served with rice and mixed vegetables"
         },
         {
           name: "Garlic Shrimp",
           price: 26.99,
-          description: "Jumbo shrimp sautéed in garlic sauce, served with rice"
+          description: "pepper in garlic butter sauce served with rice and vegetables"
         },
         {
           name: "Broiled Scallops",
           price: 27.99,
-          description: "With lemon butter sauce, served with rice and vegetables"
+          description: "With lemon butter sauce served with rice and vegetables"
         },
         {
-          name: "Broiled Shrimp Scampi",
+          name: "Scallop Shrimp Scampi",
           price: 27.99,
-          description: "Jumbo shrimp sautéed in garlic butter sauce, served over rice"
+          description: "Shrimp and scallops combination with garlic, lemon butter sauce served over linguine"
         },
         {
-          name: "Scallops Marinara or Fra Diavolo",
+          name: "Seafood Marinara or Fly Diablo",
           price: 34.99,
-          description: "Served over linguine"
-        },
-        {
-          name: "Seafood Marinara or Fra Diavolo",
-          price: 34.99,
-          description: "Shrimp, scallops, mussels over linguine"
+          description: "shrimp, scallops, clams, mussels served over linguine"
         },
         {
           name: "Stuffed Tilapia",
           price: 28.99,
-          description: "Tilapia stuffed with crab meat, served with mashed potatoes"
+          description: "served with mashed potatoes and vegetables"
         },
         {
           name: "Fish and Chips",
-          price: 15.99
+          price: 15.99,
+          description: 'served with french fries'
         }
       ]
     },    
@@ -680,54 +734,52 @@ export class MenuComponent {
       name: "PASTAS",
       items: [
         {
-          name: "(Add Chicken",
-          price: 6.99,
-          description: "with Steak $8.99 • with Shrimp $8.99 • or Salmon)"
+          name: 'Add Chicken • $6.99 with Steak $8.99 • with Shrimp $8.99 • or Salmon'
         },
         {
           name: "Penne Alla Vodka",
           price: 17.99,
-          description: "Penne pasta sautéed in vodka, tomato cream sauce"
+          description: "Penne pasta sautéed in a vodka cream sauce"
         },
         {
           name: "Penne Napoles",
           price: 17.99,
-          description: "Penne pasta sautéed with mushrooms, basil in a spicy marinara sauce"
+          description: "Onions, tomatoes, mushroom, fresh mozzarella, basil in a spicy marinara sauce"
         },
         {
           name: "Fettuccine Alfredo",
           price: 17.99,
-          description: "Fettuccine pasta tossed in a parmesan cream sauce"
+          description: "Fettuccine pasta sauteed in a parmesan cream sauce"
         },
         {
           name: "Fettuccine Carbonara",
           price: 17.99,
-          description: "Fettuccine pasta with bacon, onion in creamy sauce"
+          description: "Sauteed onions, bacon, peas in a parmesan creamy sauce"
         },
         {
           name: "Sicilian Pasta",
           price: 17.99,
-          description: "Fusilli pasta sautéed with mushrooms, sun-dried tomatoes, spinach in garlic olive sauce"
+          description: "Farfalle pasta sauteed mushrooms, sun dried tomatoes, spinach in a garlic olive sauce"
         },
         {
           name: "Farfalle Bolognese",
           price: 20.99,
-          description: "Farfalle pasta with meat sauce, topped with fresh mozzarella"
+          description: "Farfalle pasta with meat sauce, basil with fresh mozzarella"
         },
         {
           name: "Cajun Pasta",
           price: 17.99,
-          description: "Fusilli pasta with onions, mushrooms, and chicken in Cajun cream sauce"
+          description: "Farfalle pasta with onions, tomatoes, mushroom, peas in a cajun cream sauce"
         },
         {
           name: "Chef’s Pasta Special",
           price: 20.99,
-          description: "Zucchini, mushrooms, roasted peppers, fresh mozzarella in creamy vodka sauce"
+          description: "Pasta sauteed with asparagus, zucchini, roasted peppers, fresh mozzarella in a creamy vodka sauce"
         },
         {
           name: "Meatballs",
           price: 20.99,
-          description: "Served with linguine, marinara sauce"
+          description: "Served with Linguine, with tomato sauce"
         }
       ]
     },    
@@ -740,34 +792,46 @@ export class MenuComponent {
         },
         {
           name: "Sweet Potato Fries",
-          price: 5.99
+          price: 6.99
         },
         {
           name: "Waffle Fries",
           price: 5.99
         },
         {
-          name: "Onion Rings",
-          price: 5.99
-        },
-        {
-          name: "Side of Vegetables",
+          name: "Rice",
           price: 4.99
         },
         {
-          name: "Side of Mashed Potatoes",
+          name: "Side Home Fries",
+          price: 4.99
+        },
+        {
+          name: "English Muffin",
           price: 3.99
         },
         {
-          name: "Side of Rice",
+          name: "Avocado Sliced",
+          price: 4.99
+        },
+        {
+          name: "Bagel",
           price: 3.99
         },
         {
-          name: "Side of Avocado",
-          price: 2.99
+          name: "Fresh Fruit Salad",
+          price: 6.99
         },
         {
-          name: "Bacon (3 pcs)",
+          name: "Bagel with cream cheese",
+          price: 4.99
+        },
+        {
+          name: "Cereal (with fruit $4.99)",
+          price: 3.99
+        },
+        {
+          name: "Onion Rings",
           price: 5.99
         },
         {
@@ -775,7 +839,19 @@ export class MenuComponent {
           price: 5.99
         },
         {
-          name: "Ham (2 pcs)",
+          name: "Beans",
+          price: 4.99
+        },
+        {
+          name: "Homeade Soups",
+          price: 5.99
+        },
+        {
+          name: "Bacon (6 pcs)",
+          price: 5.99
+        },
+        {
+          name: "Ham slice (2 pcs)",
           price: 5.99
         },
         {
@@ -783,34 +859,24 @@ export class MenuComponent {
           price: 5.99
         },
         {
-          name: "Home Fries",
-          price: 4.99
-        },
-        {
           name: "Toast",
           price: 1.99
         },
         {
-          name: "Bagel",
-          price: 2.99
-        },
-        {
-          name: "English Muffin",
-          price: 2.99
-        },
-        {
           name: "Roll",
-          price: 1.99
+          price: 2.99
         },
         {
           name: "Muffin (Corn or Blueberry)",
           price: 3.99
         },
         {
-          name: "Cup of Oatmeal $3.99 (with fruit $4.99)"
+          name: "Cup of Oatmeal (with fruit $4.99)",
+          price: 3.99
         },
         {
-          name: "Bowl of Oatmeal $4.99 (with fruit $5.99)"
+          name: "Bowl of Oatmeal (with fruit $5.99)",
+          price: 4.99
         }
       ]
     },    
@@ -819,6 +885,10 @@ export class MenuComponent {
       items: [
         {
           name: "Coffee $3.25 (unlimited per visit)"
+        },
+        {
+          name: "Herbal Tea",
+          price: 3.99
         },
         {
           name: "Black Tea",
@@ -835,11 +905,6 @@ export class MenuComponent {
         {
           name: "Milk",
           price: 3.25,
-          description: "Juice (Apple, Orange, Tomato, Cranberry, Pineapple)"
-        },
-        {
-          name: "Small $3.99 • Large",
-          price: 6.99
         },
         {
           name: "Espresso",
@@ -856,7 +921,19 @@ export class MenuComponent {
         {
           name: "Soda or Iced Tea",
           price: 3.35
-        }
+        },
+        {
+          name: "Pellegrino",
+          price: 3.50
+        },
+        {
+          name: "Juices",
+          price: 4.25
+        },
+        {
+          name: "Fresh Orange Juice",
+          price: 4.99
+        },
       ]
     },    
     {
@@ -873,14 +950,30 @@ export class MenuComponent {
       ]
     },    
     {
-      name: "KIDS MENU",
+      name: "KIDS MENU (Including Milk or Soda)",
       items: [
         {
-          name: "(Each served with French fries and a juice box or milk. Soda +$0.99)",
-          description: "Penne Mac and Cheese Grilled Cheese & French Fries Cheeseburger & French Fries"
+          name: "Mac and Cheese",
+          price: 9.99
         },
         {
-          name: "Linguine Combo with one Mickey Pancake",
+          name: "Penne Butter",
+          price: 9.99
+        },
+        {
+          name: "Grill Cheese & French Fries",
+          price: 9.99
+        },
+        {
+          name: "Cheese Burger & French Fries",
+          price: 9.99
+        },
+        {
+          name: "Linguine Tomato Sauce",
+          price: 9.99
+        },
+        {
+          name: "Micky pancake with egg",
           price: 8.99
         }
       ]
@@ -891,136 +984,79 @@ export class MenuComponent {
     { name: "AVOCADO BENEDICT – $14.99", items: [] },
     { name: "STEAK BENEDICT – $17.99", items: [] },
     { name: "EGGS BENEDICT – $14.99", items: [] },
-    { name: "BUFFALO SKILLET", items: [] },    
+    { name: "BUFFALO SKILLET", items: [] },        
     {
-      name: "TRY VARIOUS DRINKS",
+      name: "Lunch Specials (Served with a cup of soup) Monday - Friday 11am to 3pm",
       items: [
         {
-          name: "Tropical Smoothie –",
-          price: 7.99,
-          description: "(Mango, Pineapple, Banana)"
-        },
-        {
-          name: "Classic Smoothie –",
-          price: 7.99,
-          description: "(Banana & Strawberries)"
-        },
-        {
-          name: "The Diner Smoothie –",
-          price: 8.99,
-          description: "(Bananas, Blueberries, Strawberries & Pineapple)"
-        },
-        {
-          name: "Fresh Squeezed Orange Juice –",
-          price: 6.99
-        },
-        {
-          name: "Cappuccino –",
-          price: 4.99
-        },
-        {
-          name: "Espresso –",
-          price: 3.99
-        }
-      ]
-    },    
-    { name: "NEW MILKSHAKES – $5.99", items: [] },
-    {
-      name: "TRY OUR NEW FLAVORED COFFEE – $3.99",
-      items: [
-        {
-          name: "Regular Cappuccino –",
-          price: 4.99
-        },
-        {
-          name: "Flavored Cappuccino –",
-          price: 5.99,
-          description: "(French Vanilla or Hazelnut)"
-        }
-      ]
-    },    
-    {
-      name: "PREMIUM MIMOSA",
-      items: [
-        {
-          name: "($14.99)",
-          description: "Made with: ½ Ounce Mandarin Vodka ½ Ounce Fresh Orange Juice The Best Diner 36 Lafayette Ave, Suffern, NY 10901, USA 📞 845-357-5700 Open 7 days a week Sun–Thu: 7 AM – 9 PM Fri & Sat: 7 AM – 10 PM Lunch Specials Served Monday to Friday from 11 AM to 3 PM All served with a cup of soup"
-        },
-        {
-          name: "Tex Mex Quesadilla –",
+          name: "5 Tex mex tostones with guacamole",
           price: 12.99,
-          description: "3 beef empanadas served with chipotle mayo"
         },
         {
-          name: "Tostones con Chicharron –",
+          name: "3 Tostones and 3 shrimp al ajillo",
+          price: 15.99,
+        },
+        {
+          name: "3 Beef empanadas served with chipotle mayo",
           price: 12.99,
-          description: "3 tostones topped with shrimp, guacamole, jalapeños, and salsa"
         },
         {
-          name: "Ceviche Plate –",
+          name: "Beef Gyro Platter",
           price: 17.99,
-          description: "Shrimp ceviche served on a tostada with house salad"
+          description: 'Gyro meat on pita bread served with greek salad and french fries, tzatziki sauce'
         },
         {
-          name: "Stuffed Avocado –",
+          name: "Stuffed Avocado",
           price: 14.99,
-          description: "Half avocado stuffed with tuna or chicken salad, over spring mix with sliced egg, tomato, onions, and olives. Served with balsamic dressing."
+          description: 'Half avocado, stuffed with tuna or chicken salad w/sliced egg, tomato, onions, and olives w/balsamic dressing'
         },
         {
-          name: "Chicken Chipotle Avocado Sandwich –",
+          name: "Spanish Steak",
+          price: 20.99,
+          description: 'Sirloin steak 12 oz, seasoned with caramelized onions served with spanish rice and black beans.'
+        },
+        {
+          name: "Chicken Chipotle Deluxe Sandwich",
           price: 13.99,
-          description: "Grilled chicken, chipotle mayo, avocado, lettuce, tomato on a roll. Served with fries."
+          description: 'Crispy breaded chicken with chipotle mayo, lettuce, tomato on a kaiser roll served with french fries'
         },
         {
-          name: "California Wrap –",
-          price: 13.99,
-          description: "Grilled chicken, avocado, tomato, cucumber, roasted peppers, fresh mozzarella, mixed greens. Served with oriental dressing."
+          name: "Oriental Sesame Salad",
+          price: 16.99,
+          description: 'California spring mixed with tomatoes, cucumbers, roasted peppers, fresh mozzarella & crispy noodles, grilled chicken. With sesame oriental dressing '
         },
         {
-          name: "Tex Mex Bowl –",
-          price: 12.99,
-          description: "Grilled chicken over rice, corn, black beans, pico de gallo, chipotle mayo"
+          name: "Giant Burrito Wrap",
+          price: 16.99,
+          description: 'Grilled chicken onion, peppers, tomatoes, black beans, and cheddar cheese served with rice, guacamole, and salsa'
         },
         {
-          name: "Chicken Fajita Panini –",
-          price: 13.99,
-          description: "Grilled chicken, sautéed onions and peppers, cheddar cheese served with fries"
-        },
-        {
-          name: "Grilled Fish Tacos (2) –",
+          name: "Chicken Pesto Panini",
           price: 15.99,
-          description: "Served with fries and chipotle mayo"
+          description: 'Grilled chicken, fresh mozzarella cheese, roasted pepper, and pesto sauce served with french fries'
         },
         {
-          name: "Chicken Tenders & Fries –",
-          price: 13.99
-        },
-        {
-          name: "California Chicken Caesar Salad –",
+          name: "Fish And Chips",
           price: 15.99,
-          description: "Romaine, grilled chicken, parmesan cheese, roasted peppers, and Caesar dressing"
+          description: 'Served with french fries and tartar sauce'
         },
         {
-          name: "Greek Salad with Chicken –",
-          price: 15.99,
-          description: "Romaine, tomato, cucumber, red onions, kalamata olives, feta cheese"
-        },
-        {
-          name: "Mediterranean Salad –",
-          price: 15.99,
-          description: "Spring mix, tomato, cucumber, red onions, feta cheese, kalamata olives, grape leaves"
-        },
-        {
-          name: "Meatball Parmigiana –",
-          price: 14.99,
-          description: "Baked meatballs served over linguine in tomato sauce"
-        },
-        {
-          name: "Pan-Seared Tilapia –",
+          name: "Calamari Salad",
           price: 17.99,
-          description: "Served with rice and lemon butter sauce"
-        }
+          description: 'Garden spring mix tomatoes, cucumbers, onions, olives & crispy calamri served with balsamic & olive oil dressing'
+        },
+        {
+          name: "Meatball Parmigiana",
+          price: 16.99,
+          description: 'Baked meatballs, melted mozzarella cheese & tomato sauce served over linguine'
+        },
+        {
+          name: "Tilapia Francaise",
+          price: 17.99,
+          description: 'Pan seared tilapia with lemon butter sauce served with rice'
+        },
       ]
     }
   ];
+  
 }
