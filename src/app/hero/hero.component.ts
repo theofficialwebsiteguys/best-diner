@@ -53,5 +53,13 @@ export class HeroComponent implements OnInit {
     });
   }
 
+  scrollToSpecials() {
+    const specialsSection = document.getElementById('specials');
+    if (specialsSection) {
+      specialsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  
 }
 

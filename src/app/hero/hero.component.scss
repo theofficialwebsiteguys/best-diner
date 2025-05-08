@@ -118,7 +118,50 @@ a.btn-phone {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .specials-btn {
+    background-color: #a92224;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  
+    &:hover {
+      background-color: #911d1f;
+      transform: translateY(-2px);
+    }
+  }
+  
+  .ubereats-button a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  
+  .ubereats-button a:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 600px) {
+    .specials-btn {
+      width: 90%;
+    }
+  }
+  
 
 .button-group {
     display: flex;
@@ -391,3 +434,19 @@ a.btn-phone {
     font-size: 14px;
 }
 
+.specials-scroll-button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background-color: #eee;
+    }
+  }
+  

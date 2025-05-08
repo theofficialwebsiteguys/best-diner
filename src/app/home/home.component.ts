@@ -78,7 +78,8 @@ export class HomeComponent {
     }
   ];
   
-
+  modalOpen = false;
+  selectedImage: string = '';
   //constructor(private renderer: Renderer2) { }
 
   ngAfterViewInit(): void {
@@ -86,5 +87,15 @@ export class HomeComponent {
     setTimeout(() => {
       //this.renderer.addClass(this.homeContainer.nativeElement, 'fade-in');
     }, 0);
+  }
+
+  
+  openImageModal(image: string) {
+    this.selectedImage = image;
+    this.modalOpen = true;
+  }
+
+  closeImageModal() {
+    this.modalOpen = false;
   }
 }

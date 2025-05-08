@@ -25,7 +25,7 @@
   </section>
   
 
-<!-- <div class="banner2">
+<div class="banner2">
     <div class="banner-sections2">
         <h2 class="banner-title">Dinner Specials</h2>
         <div
@@ -131,7 +131,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="reviews-section">
     <h2 class="reviews-title">See What Our Customers Have To Say!</h2>
@@ -150,6 +150,31 @@
   </div>
   
   
+  <section id="specials" class="specials-gallery">
+    <h2 class="specials-title">Our Specials</h2>
+    <div class="specials-grid">
+      <div class="special-item">
+        <img
+          src="assets/happy-hour-special.webp"
+          alt="Lunch Specials"
+          (click)="openImageModal('assets/happy-hour-special.webp')"
+        />
+      </div>
+      <div class="special-item">
+        <img
+          src="assets/brunch-special.webp"
+          alt="Brunch Specials"
+          (click)="openImageModal('assets/brunch-special.webp')"
+        />
+      </div>
+    </div>
+  
+    <!-- Modal -->
+    <div class="image-modal" [class.open]="modalOpen" (click)="closeImageModal()">
+      <img [src]="selectedImage" alt="Full View" />
+    </div>
+  </section>
+
   
   <app-footer-map></app-footer-map>
 <!-- <div class="footer-container">

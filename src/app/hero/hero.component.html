@@ -5,12 +5,20 @@
             <p>A warm, family-friendly spot with a full bar — serving comfort food classics and new favorites, all day long.</p>
         </div>
         <div class="order-buttons">
-            <div class="button-group">
-                <a href="https://www.ubereats.com/store/the-best-diner-family-restaurant/er_AzanUQsimXTX8AmYrjw?diningMode=DELIVERY"
-                    class="order-button ubereats" target="_blank">
-                    <img height="85" width="175" src="assets/button-ubereats.png" alt="Order on UberEats">
-                </a>
+            <div class="button-row specials-buttons">
+              <button class="order-button specials-btn" (click)="scrollToSpecials()">Happy Hour Specials</button>
+              <button class="order-button specials-btn" (click)="scrollToSpecials()">Brunch Specials</button>
             </div>
-        </div>
+            <div class="button-row ubereats-button">
+              <a
+                href="https://www.ubereats.com/store/the-best-diner-family-restaurant/er_AzanUQsimXTX8AmYrjw?diningMode=DELIVERY"
+                class="order-button ubereats"
+                target="_blank"
+              >
+                <img height="85" width="175" src="assets/button-ubereats.png" alt="Order on UberEats" />
+              </a>
+            </div>
+          </div>
+          
     </div>
 </div>
