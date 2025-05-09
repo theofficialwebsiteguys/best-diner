@@ -28,5 +28,13 @@ export class NavComponent {
   closeMenu() {
     this.mobileMenuActive = false;
   }
+
+    scrollToSpecials() {
+    const specialsSection = document.getElementById('specials');
+    if (specialsSection) {
+      specialsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   
 }

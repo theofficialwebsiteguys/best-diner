@@ -450,3 +450,33 @@ a.btn-phone {
     }
   }
   
+  .delivery-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.delivery-buttons a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  height: 60px;
+}
+
+.delivery-buttons a img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.delivery-buttons a:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .delivery-buttons a img {
+    height: 50px;
+  }
+}

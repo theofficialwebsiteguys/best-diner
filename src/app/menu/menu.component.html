@@ -1,28 +1,74 @@
 <section class="menu-section">
     <div class="container">
-      <h1 class="menu-title">Our Menu</h1>
-  
+     <h1 class="menu-title">Breakfast</h1>
       <div class="menu-grid">
-        <div class="menu-category" *ngFor="let category of menu">
-          <div class="category-toggle" (click)="isMobile ? category.expanded = !category.expanded : null">
-            <h2 class="category-title">
-              {{ category.name }}
-              <span class="toggle-icon" *ngIf="isMobile">{{ category.expanded ? '−' : '+' }}</span>
-            </h2>
-          </div>
-          
-          
-          <div class="menu-items" *ngIf="category.expanded">
-            <div class="menu-item" *ngFor="let item of category.items">
-              <div class="menu-item-header">
-                <h4>{{ item.name }}</h4>
-                <span *ngIf="item.price != null">${{ item.price.toFixed(2) }}</span>
+        <ng-container *ngFor="let category of breakfastMenu">
+          <div class="menu-category">
+            <div class="category-toggle" (click)="isMobile ? category.expanded = !category.expanded : null">
+              <h2 class="category-title">
+                {{ category.name }}
+                <span class="toggle-icon" *ngIf="isMobile">{{ category.expanded ? '−' : '+' }}</span>
+              </h2>
+            </div>
+            <div class="menu-items" *ngIf="category.expanded">
+              <div class="menu-item" *ngFor="let item of category.items">
+                <div class="menu-item-header">
+                  <h4>{{ item.name }}</h4>
+                  <span *ngIf="item.price != null">${{ item.price.toFixed(2) }}</span>
+                </div>
+                <p class="item-description" *ngIf="item.description">{{ item.description }}</p>
               </div>
-              <p class="item-description" *ngIf="item.description">{{ item.description }}</p>
             </div>
           </div>
-        </div>
+        </ng-container>
       </div>
+
+      <h1 class="menu-title">Lunch & Dinner</h1>
+      <div class="menu-grid">
+        <ng-container *ngFor="let category of lunchDinnerMenu">
+          <div class="menu-category">
+            <div class="category-toggle" (click)="isMobile ? category.expanded = !category.expanded : null">
+              <h2 class="category-title">
+                {{ category.name }}
+                <span class="toggle-icon" *ngIf="isMobile">{{ category.expanded ? '−' : '+' }}</span>
+              </h2>
+            </div>
+            <div class="menu-items" *ngIf="category.expanded">
+              <div class="menu-item" *ngFor="let item of category.items">
+                <div class="menu-item-header">
+                  <h4>{{ item.name }}</h4>
+                  <span *ngIf="item.price != null">${{ item.price.toFixed(2) }}</span>
+                </div>
+                <p class="item-description" *ngIf="item.description">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+       <h1 class="menu-title">Drinks</h1>
+      <div class="menu-grid">
+        <ng-container *ngFor="let category of drinkMenu">
+          <div class="menu-category">
+            <div class="category-toggle" (click)="isMobile ? category.expanded = !category.expanded : null">
+              <h2 class="category-title">
+                {{ category.name }}
+                <span class="toggle-icon" *ngIf="isMobile">{{ category.expanded ? '−' : '+' }}</span>
+              </h2>
+            </div>
+            <div class="menu-items" *ngIf="category.expanded">
+              <div class="menu-item" *ngFor="let item of category.items">
+                <div class="menu-item-header">
+                  <h4>{{ item.name }}</h4>
+                  <span *ngIf="item.price != null">${{ item.price.toFixed(2) }}</span>
+                </div>
+                <p class="item-description" *ngIf="item.description">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
     </div>
   </section>
   

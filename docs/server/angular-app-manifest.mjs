@@ -8,14 +8,14 @@ export default {
   entryPointToBrowserMapping: {
   "node_modules/@angular/animations/fesm2022/browser.mjs": [
     {
-      "path": "chunk-3PNXMNAV.js",
+      "path": "chunk-PN2G25Z5.js",
       "dynamicImport": false
     }
   ]
 },
   assets: {
-    'index.csr.html': {size: 5285, hash: 'fb3768b548b8fb9e2fc921487f43cea96beaed7107095df18e685478241ada57', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1177, hash: '60648200946b0972a04608027257873586770419d3e3f71b589b7226a654987c', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 5285, hash: 'c22945f6dbd3b855fd13c0ccc4358f017e56a4d018d93dfaec35deb3a79fcf8e', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1177, hash: '0274495c8f0b8feee0b74a9074946feb687fbeb1503046344ac8fcd73a9d3d1a', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
     'styles-JCUBLLHF.css': {size: 234167, hash: 'scinUUTXv9s', text: () => import('./assets-chunks/styles-JCUBLLHF_css.mjs').then(m => m.default)}
   },
 };
